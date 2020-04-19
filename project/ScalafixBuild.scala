@@ -229,7 +229,7 @@ object ScalafixBuild extends AutoPlugin with GhpagesKeys {
     homepage := Some(url("https://github.com/scalacenter/scalafix")),
     autoAPIMappings := true,
     apiURL := Some(url("https://scalacenter.github.io/scalafix/")),
-    organization := "ch.epfl.scala",
+    organization := "com.sandinh",
     developers ++= List(
       Developer(
         "xeno-by",
@@ -282,15 +282,11 @@ object ScalafixBuild extends AutoPlugin with GhpagesKeys {
     scalacOptions.in(Compile, console) :=
       compilerOptions.value :+ "-Yrepl-class-based",
     scalacOptions.in(Compile, doc) ++= scaladocOptions,
-    publishTo := Some {
-      if (isCustomRepository) "adhoc" at adhocRepoUri
-      else if (isSnapshot.value) Opts.resolver.sonatypeSnapshots
-      else Opts.resolver.sonatypeStaging
-    },
+    publishTo := xerial.sbt.Sonatype.autoImport.sonatypePublishToBundle.value,
     scmInfo := Some(
       ScmInfo(
-        url("https://github.com/scalacenter/scalafix"),
-        "scm:git:git@github.com:scalacenter/scalafix.git"
+        url("https://github.com/giabao/scalafix"),
+        "scm:git:git@github.com:giabao/scalafix.git"
       )
     ),
     mimaPreviousArtifacts := {
