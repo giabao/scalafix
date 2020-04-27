@@ -2,8 +2,8 @@ import Dependencies._
 inThisBuild(
   List(
     onLoadMessage := s"Welcome to scalafix ${version.value}",
-    scalaVersion := scala212,
-    crossScalaVersions := List(scala212, scala211),
+    scalaVersion := scala213,
+    crossScalaVersions := List(scala213, scala212, scala211),
     fork := true
   )
 )
@@ -50,7 +50,7 @@ lazy val interfaces = project
     javaHome.in(Compile, doc) := inferJavaHome(),
     moduleName := "scalafix-interfaces",
     crossVersion := CrossVersion.disabled,
-    crossScalaVersions := List(scala212),
+    crossScalaVersions := List(scala213),
     autoScalaLibrary := false
   )
 
@@ -256,9 +256,8 @@ lazy val docs = project
     baseDirectory.in(run) := baseDirectory.in(ThisBuild).value,
     skip in publish := true,
     moduleName := "scalafix-docs",
-    scalaVersion := scala212,
     mdoc := run.in(Compile).evaluated,
-    crossScalaVersions := List(scala212),
+    crossScalaVersions := List(scala213),
     libraryDependencies ++= List(
       "com.geirsson" %% "metaconfig-docs" % metaconfigV,
       "org.scalameta" % "semanticdb-scalac-core" % scalametaV cross CrossVersion.full
