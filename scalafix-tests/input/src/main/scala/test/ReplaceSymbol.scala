@@ -17,6 +17,9 @@ patches.replaceSymbols = [
   // normalized symbol renames all overloaded methods
   { from = "scala.collection.TraversableOnce.mkString."
     to = "unsafeMkString" }
+  // for scala 2.13
+  { from = "scala.collection.IterableOnceOps.mkString."
+    to = "unsafeMkString" }
   // non-normalized symbol renames single method overload
   { from = "java/lang/String#substring()."
     to = "substringFrom" }
